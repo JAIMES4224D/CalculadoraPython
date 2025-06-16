@@ -4,7 +4,7 @@ import math
 
 # Configuración de la ventana principal
 var = tk.Tk()
-var.title("Calculadora Científica Avanzada")
+var.title("Calculadora Científica Premium")
 var.resizable(False, False)
 var.configure(bg='#2c3e50')
 
@@ -13,9 +13,9 @@ font_buttons = tkfont.Font(family='Helvetica', size=12, weight='bold')
 font_display = tkfont.Font(family='Courier', size=16, weight='bold')
 
 # Pantalla de resultados
-e = tk.Entry(var, width=18, borderwidth=0, font=font_display,
+e = tk.Entry(var, width=25, borderwidth=0, font=font_display,
              bg='#ecf0f1', fg='#2c3e50', justify='right', insertbackground='#2c3e50')
-e.grid(row=0, column=0, columnspan=4, padx=10, pady=(20, 10), ipady=15)
+e.grid(row=0, column=0, columnspan=5, padx=10, pady=(20, 10), ipady=15)
 
 # Variables globales
 functionnum = 0
@@ -27,6 +27,8 @@ color_ops = '#3498db'
 color_func = '#9b59b6'
 color_equals = '#2ecc71'
 color_clear = '#e74c3c'
+color_trig = '#1abc9c'
+color_inv_trig = '#16a085'
 
 
 # Backend - Funciones
@@ -59,23 +61,71 @@ def botonigual():
     try:
         num2 = e.get()
         e.delete(0, tk.END)
-        if num2 == "":
-            return
 
-        num2 = float(num2)
-
-        if mathematics == "adicion":
-            result = functionnum + num2
-        elif mathematics == "sustraccion":
-            result = functionnum - num2
-        elif mathematics == "multiplicacion":
-            result = functionnum * num2
-        elif mathematics == "division":
-            result = functionnum / num2
-        elif mathematics == "elevado":
-            result = functionnum ** num2
-        elif mathematics == "ave":
-            result = (functionnum + num2) / 2
+        if mathematics == "raizcuadrada":
+            result = math.sqrt(functionnum)
+        elif mathematics == "porcentaje":
+            result = functionnum / 100
+        elif mathematics == "sen":
+            rad = functionnum * (math.pi / 180)
+            result = math.sin(rad)
+        elif mathematics == "cos":
+            rad = functionnum * (math.pi / 180)
+            result = math.cos(rad)
+        elif mathematics == "tan":
+            rad = functionnum * (math.pi / 180)
+            result = math.tan(rad)
+        elif mathematics == "csc":
+            rad = functionnum * (math.pi / 180)
+            result = 1 / math.sin(rad)
+        elif mathematics == "sec":
+            rad = functionnum * (math.pi / 180)
+            result = 1 / math.cos(rad)
+        elif mathematics == "cot":
+            rad = functionnum * (math.pi / 180)
+            result = 1 / math.tan(rad)
+        elif mathematics == "cuadrado":
+            result = functionnum ** 2
+        elif mathematics == "cubo":
+            result = functionnum ** 3
+        elif mathematics == "lognatural":
+            result = math.log(functionnum)
+        elif mathematics == "e":
+            result = math.exp(functionnum)
+        elif mathematics == "log":
+            result = math.log10(functionnum)
+        elif mathematics == "negativo":
+            result = functionnum * -1
+        elif mathematics == "valorabsoluto":
+            result = abs(functionnum)
+        elif mathematics == "factorial":
+            result = math.factorial(int(functionnum))
+        elif mathematics == "2elevadoa":
+            result = 2 ** functionnum
+        elif mathematics == "inverso":
+            result = functionnum ** -1
+        elif mathematics == "seninverso":
+            result = math.degrees(math.asin(functionnum))
+        elif mathematics == "cosinverso":
+            result = math.degrees(math.acos(functionnum))
+        elif mathematics == "taninverso":
+            result = math.degrees(math.atan(functionnum))
+        else:
+            if num2 == "":
+                return
+            num2 = float(num2)
+            if mathematics == "adicion":
+                result = functionnum + num2
+            elif mathematics == "sustraccion":
+                result = functionnum - num2
+            elif mathematics == "multiplicacion":
+                result = functionnum * num2
+            elif mathematics == "division":
+                result = functionnum / num2
+            elif mathematics == "elevado":
+                result = functionnum ** num2
+            elif mathematics == "ave":
+                result = (functionnum + num2) / 2
 
         e.insert(0, str(round(result, 10)).rstrip('0').rstrip('.') if '.' in str(result) else result)
     except ValueError:
@@ -86,13 +136,13 @@ def botonigual():
         e.insert(0, f"Error: {str(ex)}")
 
 
-def create_func_button(text, command, row, col, color=color_func, colspan=1):
-    btn = tk.Button(var, text=text, padx=20, pady=15, font=font_buttons,
+def create_func_button(text, command, row, col, color=color_func, colspan=1, width=6):
+    btn = tk.Button(var, text=text, padx=15, pady=10, font=font_buttons,
                     bg=color, fg='white', activebackground='#bdc3c7',
                     activeforeground='#2c3e50', relief='flat',
                     borderwidth=0, highlightthickness=0,
-                    command=command)
-    btn.grid(row=row, column=col, columnspan=colspan, padx=3, pady=3, sticky="nsew")
+                    command=command, width=width)
+    btn.grid(row=row, column=col, columnspan=colspan, padx=2, pady=2, sticky="nsew")
     return btn
 
 
@@ -100,33 +150,56 @@ def create_func_button(text, command, row, col, color=color_func, colspan=1):
 for i in range(1, 10):
     row = (9 - i) // 3 + 2
     col = (i - 1) % 3
-    create_func_button(str(i), lambda num=i: thebutton(num), row, col, color_nums)
+    create_func_button(str(i), lambda num=i: thebutton(num), row, col, color_nums, width=5)
 
-create_func_button("0", lambda: thebutton(0), 5, 1, color_nums)
-create_func_button(".", lambda: thebutton("."), 5, 2, color_nums)
-create_func_button("π", lambda: thebutton(math.pi), 5, 0, color_func)
+create_func_button("0", lambda: thebutton(0), 5, 1, color_nums, width=5)
+create_func_button(".", lambda: thebutton("."), 5, 2, color_nums, width=5)
+create_func_button("π", lambda: thebutton(math.pi), 5, 0, color_func, width=5)
 
-# Botones de operaciones
-create_func_button("+", create_operation_func("adicion"), 2, 3, color_ops)
-create_func_button("-", create_operation_func("sustraccion"), 3, 3, color_ops)
-create_func_button("×", create_operation_func("multiplicacion"), 4, 3, color_ops)
-create_func_button("÷", create_operation_func("division"), 5, 3, color_ops)
+# Botones de operaciones básicas
+create_func_button("+", create_operation_func("adicion"), 2, 3, color_ops, width=5)
+create_func_button("-", create_operation_func("sustraccion"), 3, 3, color_ops, width=5)
+create_func_button("×", create_operation_func("multiplicacion"), 4, 3, color_ops, width=5)
+create_func_button("÷", create_operation_func("division"), 5, 3, color_ops, width=5)
 
 # Botones especiales
-create_func_button("C", botonlimpiar, 1, 0, color_clear)
-create_func_button("√", lambda: [e.insert(0, math.sqrt(float(e.get()))) if e.get() else None], 1, 1, color_func)
-create_func_button("^", create_operation_func("elevado"), 1, 2, color_func)
-create_func_button("=", botonigual, 6, 3, color_equals)
+create_func_button("C", botonlimpiar, 1, 0, color_clear, width=5)
+create_func_button("√", create_operation_func("raizcuadrada"), 1, 1, color_func, width=5)
+create_func_button("^", create_operation_func("elevado"), 1, 2, color_func, width=5)
+create_func_button("=", botonigual, 5, 4, color_equals, colspan=2, width=11)
 
-# Botones científicos
-create_func_button("sin", lambda: e.insert(0, math.sin(math.radians(float(e.get()))) if e.get() else None), 6, 0)
-create_func_button("cos", lambda: e.insert(0, math.cos(math.radians(float(e.get()))) if e.get() else None), 6, 1)
-create_func_button("tan", lambda: e.insert(0, math.tan(math.radians(float(e.get()))) if e.get() else None), 6, 2)
+# Botones científicos - Fila 1
+create_func_button("sin", create_operation_func("sen"), 6, 0, color_trig)
+create_func_button("cos", create_operation_func("cos"), 6, 1, color_trig)
+create_func_button("tan", create_operation_func("tan"), 6, 2, color_trig)
+create_func_button("log", create_operation_func("log"), 6, 3, color_func)
+create_func_button("ln", create_operation_func("lognatural"), 6, 4, color_func)
+
+# Botones científicos - Fila 2
+create_func_button("asin", create_operation_func("seninverso"), 7, 0, color_inv_trig)
+create_func_button("acos", create_operation_func("cosinverso"), 7, 1, color_inv_trig)
+create_func_button("atan", create_operation_func("taninverso"), 7, 2, color_inv_trig)
+create_func_button("x²", create_operation_func("cuadrado"), 7, 3, color_func)
+create_func_button("x³", create_operation_func("cubo"), 7, 4, color_func)
+
+# Botones científicos - Fila 3
+create_func_button("csc", create_operation_func("csc"), 8, 0, color_trig)
+create_func_button("sec", create_operation_func("sec"), 8, 1, color_trig)
+create_func_button("cot", create_operation_func("cot"), 8, 2, color_trig)
+create_func_button("|x|", create_operation_func("valorabsoluto"), 8, 3, color_func)
+create_func_button("x⁻¹", create_operation_func("inverso"), 8, 4, color_func)
+
+# Botones científicos - Fila 4
+create_func_button("eˣ", create_operation_func("e"), 9, 0, color_func)
+create_func_button("n!", create_operation_func("factorial"), 9, 1, color_func)
+create_func_button("2ˣ", create_operation_func("2elevadoa"), 9, 2, color_func)
+create_func_button("%", create_operation_func("porcentaje"), 9, 3, color_func)
+create_func_button("±", create_operation_func("negativo"), 9, 4, color_func)
 
 # Configuración de grid para mejor escalado
-for i in range(7):
+for i in range(10):
     var.grid_rowconfigure(i, weight=1)
-for i in range(4):
+for i in range(5):
     var.grid_columnconfigure(i, weight=1)
 
 
@@ -136,14 +209,19 @@ def on_enter(e):
 
 
 def on_leave(e):
-    if e.widget['text'] in '0123456789':
+    text = e.widget['text']
+    if text in '0123456789.':
         e.widget['bg'] = color_nums
-    elif e.widget['text'] in '+-×÷':
+    elif text in '+-×÷':
         e.widget['bg'] = color_ops
-    elif e.widget['text'] == '=':
+    elif text == '=':
         e.widget['bg'] = color_equals
-    elif e.widget['text'] == 'C':
+    elif text == 'C':
         e.widget['bg'] = color_clear
+    elif text in ['sin', 'cos', 'tan', 'csc', 'sec', 'cot']:
+        e.widget['bg'] = color_trig
+    elif text in ['asin', 'acos', 'atan']:
+        e.widget['bg'] = color_inv_trig
     else:
         e.widget['bg'] = color_func
 
