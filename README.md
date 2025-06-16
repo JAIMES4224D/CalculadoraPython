@@ -1,6 +1,6 @@
 # Calculadora Científica Premium
 
-![Calculadora Científica Premium](image.png)
+![Calculadora Científica Premium](.\calculadora cientifica.JPG)
 
 ## 📌 Descripción
 
