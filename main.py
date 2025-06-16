@@ -95,3 +95,190 @@ def botonigual():
     if mathematics == "taninverso":
         rad = functionnum * (math.pi / 180)
         e.insert(0, math.atan(rad))
+
+def botonsustraccion():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "sustraccion"
+    functionnum = int(num1)
+    e.delete(0, END)
+
+def botonmultiplicacion():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "multiplicacion"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botondivision():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "divisiom"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonelevado():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "elevado"
+    functionnum = int(num1)
+    e.delete(0, END)
+
+def botonraizcuadrada():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "raizcuadrada"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonporcentaje():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "porcentaje"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonsen():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "sen"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botoncos():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "cos"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botontan():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "tan"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botoncsc():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "csc"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonsec():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "sec"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botoncot():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "cot"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonave():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "ave"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botoncuadrado():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "cuadrado"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botoncubo():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "cubo"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonlognatural():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "lognatural"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botone():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "e"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonlog():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "log"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonnegativo():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "negativo"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonvalorabsoluto():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "valorabsoluto"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonfactorial():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "factorial"
+    functionnum = int(num1)
+    e.delete(0, END)
+def boton2elevadoa():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "2elevadoa"
+    functionnum = int(num1)
+    e.delete(0, END)
+
+
+def botoninverso():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "inverso"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botonseninverso():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "seninverso"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botoncosinverso():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "cosinverso"
+    functionnum = int(num1)
+    e.delete(0, END)
+def botontaninverso():
+    num1 = e.get()
+    global functionnum
+    global mathematics
+    mathematics = "taninverso"
+    functionnum = int(num1)
+    e.delete(0, END)
