@@ -7,9 +7,8 @@ var.title("Calculadora compleja")
 e = Entry(var, width=50, borderwidth=10)
 e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
-var.mainloop()
 
-
+#Backend
 # cracion de funciones por boton
 def thebutton(numone):
     thecurrent = e.get()
@@ -282,3 +281,30 @@ def botontaninverso():
     mathematics = "taninverso"
     functionnum = int(num1)
     e.delete(0, END)
+
+#Frontend
+#Cracion de boton
+boton1 = Button(var, text = "1", padx = 50, pady = 25, command = lambda: thebutton(1))
+boton2 = Button(var, text = "2", padx = 50, pady = 25, command = lambda: thebutton(2))
+boton3 = Button(var, text = "3", padx = 50, pady = 25, command = lambda: thebutton(3))
+boton4 = Button(var, text = "4", padx = 50, pady = 25, command = lambda: thebutton(4))
+boton5 = Button(var, text = "5", padx = 50, pady = 25, command = lambda: thebutton(5))
+boton6 = Button(var, text = "6", padx = 50, pady = 25, command = lambda: thebutton(6))
+boton7 = Button(var, text = "7", padx = 50, pady = 25, command = lambda: thebutton(7))
+boton8 = Button(var, text = "8", padx = 50, pady = 25, command = lambda: thebutton(8))
+boton9 = Button(var, text = "9", padx = 50, pady = 25, command = lambda: thebutton(9))
+boton0 = Button(var, text = "0", padx = 50, pady = 25, command = lambda: thebutton(0))
+
+#boton local
+boton1.grid(row=1,column=0)
+boton2.grid(row=1,column=1)
+boton3.grid(row=1,column=2)
+boton4.grid(row=2,column=0)
+boton5.grid(row=2,column=1)
+boton6.grid(row=2,column=2)
+boton7.grid(row=3,column=0)
+boton8.grid(row=3,column=1)
+boton9.grid(row=3,column=2)
+boton0.grid(row=4,column=0)
+
+var.mainloop()
