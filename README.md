@@ -1,4 +1,4 @@
-# Calculadora Científica Premium
+# Calculadora Científica
 
 ![Calculadora Científica Premium](a.JPG)
 
